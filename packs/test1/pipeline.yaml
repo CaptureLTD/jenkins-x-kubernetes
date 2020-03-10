@@ -4,6 +4,8 @@ extends:
 pipelines:
   pullRequest:
     build:
+      preSteps:
+      - sh: echo "Running Tests 2"
       steps:
       - sh: export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml
         name: container-build
@@ -22,8 +24,6 @@ pipelines:
 
   release:
     build:
-      preSteps:
-      - sh: echo "Running Tests"
       steps:
       - sh: export VERSION=`cat VERSION` && skaffold build -f skaffold.yaml
         name: container-build
