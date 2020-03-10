@@ -1,9 +1,6 @@
 extends:
   import: classic
-  file: pipeline.yaml
-agent:
-  label: jenkins-jx-base
-  container: jx-base
+  file: maven/pipeline.yaml
 pipelines:
   pullRequest:
     build:
